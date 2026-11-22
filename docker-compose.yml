@@ -1,0 +1,15 @@
+  services:
+    patient-db:
+      image: postgres:16
+      container_name: patient-db
+      environment:
+        POSTGRES_DB: patient_db
+        POSTGRES_USER: careconnect
+        POSTGRES_PASSWORD: careconnect123
+      ports:
+        - "5432:5432"
+      volumes:
+        - patient-db-data:/var/lib/postgresql/data
+
+  volumes:
+    patient-db-data:
