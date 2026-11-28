@@ -5,9 +5,9 @@ spring:
   application:
     name: patient-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/patient_db
-    username: careconnect
-    password: careconnect123
+    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB:patient_db}
+    username: ${POSTGRES_USER:careconnect}
+    password: ${POSTGRES_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: validate

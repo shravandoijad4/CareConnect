@@ -1,9 +1,15 @@
 services:
-  postgres:
-    image: 'postgres:latest'
+  patient-db:
+    image: postgres:16
+    container_name: patient-db
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - '5432'
+      - "5432:5432"
+    volumes:
+      - patient-db-data:/var/lib/postgresql/data
+
+volumes:
+  patient-db-data:
